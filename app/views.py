@@ -1,3 +1,6 @@
+# The global variables are used purely for the front end; I can eliminate them
+# once I figure out how to work with jQuery's Ajax methods.
+
 from flask import Flask, render_template, flash, redirect, request
 from app import app
 from forms import InputForm, IndividualForm
