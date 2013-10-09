@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--	<link href="../assets/css/bootstrap.css" rel="stylesheet"> -->
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  #alltiles{padding-left: 7.5%}
+	  #utiltag{
+	  display: none;
+	  }
+	  #benchtag{
+	  display: none;
+	  }
+	  #hover{
+	  display: none;
+	  }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Who's On First</title>
+	<link rel="icon" type="image/ico" href="http://www.mlb.com/favicon.ico"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">Who's On First</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+			 <li><a href="/index">Individual</a></li>
+			  <li class="active"><a href="/team">Team</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	<center><input id="suggest" class="btn btn-info btn-medium disabled" value="Suggested Lineup for {{month}}.{{day}}.{{year}}"/></center>
+	<div><center><img id="pic" SRC="/static/Diamond.jpg" height=512 width=630 alt="" /></div>
+	<div id="alltiles" style="position:relative;top:-570px">
+	<div id="catcher" style="position:absolute">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{catcherp}}: {{catchermfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">C: {{catcher}}</button></a><br></div>
+	<div id ="1b" style="position:absolute;top:40px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{firstbp}}: {{firstbmfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">1B: {{firstb}}</button></a><br></div>
+	<div id ="2b" style="position:absolute;top:80px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{secondbp}}: {{secondbmfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">2B: {{secondb}}</button></a><br></div>
+	<div id = "ss" style="position:absolute;top:120px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{ssp}}: {{ssmfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">SS: {{ss}}</button></a><br></div>
+	<div id ="3b" style="position:absolute;top:160px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{thirdbp}}: {{thirdbmfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">3B: {{thirdb}}</button></a><br></div>
+	<div id ="of1" style="position:absolute;top:200px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{outfieldonep}}: {{outfieldonemfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">OF: {{outfieldone}}</button></a><br></div>
+	<div id = "of2" style="position:absolute;top:240px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{outfieldtwop}}: {{outfieldtwomfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">OF: {{outfieldtwo}}</button></a><br></div>
+	<div id = "of3" style="position:absolute;top:280px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{outfieldthreep}}: {{outfieldthreemfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">OF: {{outfieldthree}}</button></a><br></div>
+	<div id = "util1" style="position:absolute;top:320px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{utilonep}}: {{utilonemfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">{{utilone}}</button></a><br></div>
+	<div id = "util2" style="position:absolute;top:360px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{utiltwop}}: {{utiltwomfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">{{utiltwo}}</button></a><br></div>
+	<div id="utiltag" style="position:relative;top:240px">
+
+	<button class="btn btn-warning btn-medium disabled">Utility:</button><br></div>
+	<div id="benchtag" style="position:relative;top:347px">
+
+	<button class="btn btn-danger btn-medium disabled">Bench:</button><br></div>	
+	<div id="bench1" style="position:absolute;top:400px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{benchonep}}: {{benchonemfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">{{benchone}}</button></a><br></div>
+	<div id="bench2" style="position:absolute;top:440px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{benchtwop}}: {{benchtwomfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">{{benchtwo}}</button></a><br></div>
+	<div id="bench3" style="position:absolute;top:480px">
+
+	<a title="Matchup Favorability Index &#13;&#10; vs. {{benchthreep}}: {{benchthreemfi}}/100" 
+	style="background-color:#FFFFFF;color:#000000;text-decoration:none">
+	<button class="btn btn-medium">{{benchthree}}</button></a><br></div>
+	<div id="hover" style="position:absolute;top:520px">
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<i class="icon-large icon-info-sign"></i> Place cursor over player names for details.<br></div>	
+	</div>
+			
+	<script src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(window).load(function() {
+	
+		$('#catcher').delay(600).animate({marginLeft : '+=37.3%', top : '+=510px'});
+		$('#1b').delay(600).animate({marginLeft : '+=54.9%', top : '+=283px'});
+		$('#2b').delay(600).animate({marginLeft : '+=49.1%', top : '+=162px'});
+		$('#ss').delay(600).animate({marginLeft : '+=26.3%', top : '+=122px'});
+		$('#3b').delay(600).animate({marginLeft : '+=19.5%', top : '+=165px'});
+		$('#of1').delay(1000).animate({marginLeft : '+=37.1%', top : '-=174px'});
+		$('#of2').delay(1000).animate({marginLeft : '+=28%', top : '-=164px'});
+		$('#of3').delay(1000).animate({marginLeft : '+=46%', top : '-=204px'});
+        $( "#utiltag" ).delay(1100).show(0);
+		$('#util1').delay(1000).animate({top: '-=38px'});
+		$('#util2').delay(1000).animate({top: '-=38px'});
+		$('#benchtag').delay(1100).show(0);
+		$('#bench1').delay(1000).animate({top: '+=20px'});
+		$('#bench2').delay(1000).animate({top: '+=20px'});
+		$('#bench3').delay(1000).animate({top: '+=20px'});
+		$('#hover').delay(2000).show(0);
+	});
+	</script>
+	
+		<div style="position:relative;top:25px">
+	<hr><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &copy; Shanshan Ding, Insight Data Science, 2013.</p></div>
+		
+   
+  </body>
+</html>

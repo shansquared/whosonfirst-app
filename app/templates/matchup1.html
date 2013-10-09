@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--	<link href="../assets/css/bootstrap.css" rel="stylesheet"> -->
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  .hero-unit{padding-top:20px; padding-bottom:20px}
+	  .alert{background-color: #eeeeee;
+	  border: 0px;
+	  color:  #000000; padding-bottom:0px}
+	  #pane1{height: 135px;}
+	  #pane2{padding-left: 150px;}
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Who's On First</title>
+	<link rel="icon" type="image/ico" href="http://www.mlb.com/favicon.ico"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">Who's On First</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+			<li class="active"><a href="/index">Individual</a></li>
+			  <li><a href="/team">Team</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+		<script src="/static/js/jquery.min.js"></script>
+
+	<form action="" method="post" name="login">
+		{{form.hidden_tag()}}
+    <p>&nbsp;<br></p>
+	<center><p>Batter: {{form.battername()}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pitcher: {{form.pitchername()}}</p>
+	<input type="submit" class="btn btn-info btn-medium" 
+	value="Click to see how they match up"/>
+	<p>&nbsp;<br></p>
+	<div class="container" id ="container1"> 
+	<div class = "alert"><a class="close" data-dismiss="alert"><p id="xone">×</p></a>  
+     <div class="hero-unit">  
+	 <div class="text-center">
+	 <div class="tabbable"> 
+	  <ul class="nav nav-tabs">
+	  <li class="active"><a href="#pane1" data-toggle="tab"><font size =3>Overall</font></a></li>
+    <li><a href="#pane2" data-toggle="tab"><font size=3>Details</font></a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane1" class="tab-pane active">  
+	 <p><font size =3>Matchup Favorability Index for 
+	 <input type="submit" class="btn btn-success disabled" 
+	value="{{batternameone}}"/> against <input type="submit" class="btn btn-success disabled" 
+	value="{{pitchernameone}}"/></font> <font size = 4>:</font> 
+	  <font color = "{{colorone}}"><font size = 5>&nbsp;{{favratingone}}/100 </font></font><br>
+	  &nbsp;<br>
+	{% if zeroone %}
+	<div style="position:relative;top:-13px">
+	 <img SRC="/static/zero.png" height=45 width=450 /></div>
+    {% elif oneone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/one.png" height=45 width=450 /></div>
+	 {% elif twoone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/two.png" height=45 width=450 /></div>
+	 {% elif threeone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/three.png" height=45 width=450 /></div>
+	 {% elif fourone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/four.png" height=45 width=450 /></div>
+	 {% elif fiveone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/five.png" height=45 width=450 /></div>
+	 {% elif sixone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/six.png" height=45 width=450 /></div>
+	 {% elif sevenone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/seven.png" height=45 width=450 /></div>
+	 {% elif eightone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/eight.png" height=45 width=450 /></div>
+	 {% elif nineone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/nine.png" height=45 width=450 /></div>
+	 {% elif tenone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/ten.png" height=45 width=450 /></div>
+    {% endif %}
+	</div>
+	<div id="pane2" class="tab-pane" align = "left">
+	<font size = 2>An at-bat between <font size =3>{{batternameone}}</font> and <font size =3>{{pitchernameone}}</font> has:
+	<ul>
+	<li><font size =3>{{ahitone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-warning disabled" 
+	value="hit"/></li>
+	<li><font size = 3>{{awalkone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-success disabled" 
+	value="walk"/></li>
+	<li><font size = 3>{{ahrone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-danger disabled" 
+	value="homerun"/></li>
+	</ul> 
+	</font>
+	</div></div>
+	
+  </div><!-- /.tab-content -->
+  </div><!-- /.tabbable --> 
+</div></div>
+	</div>	
+	<script>	
+      $("#xone").click(function() {
+                 jQuery.ajax("kittensone", 
+                 {"type": "POST", 
+                  "data": { "xone": "1"}});
+                 }); 
+    </script>
+	<p>&nbsp;</p><br>
+	</form>
+		
+	
+	<p>&nbsp;<br></p>
+	<p>&nbsp;<br></p>
+	<p>&nbsp;<br></p>
+	<p>&nbsp;<br></p>
+	</center>
+	<hr>
+	 <footer>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&copy; Shanshan Ding, Insight Data Science, 2013.</p>
+      </footer>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  form textarea#catchernames {
+     width: 202px;
+     height: 53px;
+     max-width: 202px;
+	 }
+	 form textarea#firstbnames {
+     width: 202px;
+     height: 53px;
+     max-width: 202px;
+	 }
+	 form textarea#secondbnames {
+     width: 202px;
+     height: 53px;
+     max-width: 202px;
+	 }
+	 form textarea#ssnames {
+     width: 202px;
+     height: 53px;
+     max-width: 202px;
+	 }
+	 form textarea#thirdbnames {
+     width: 202px;
+     height: 53px;
+     max-width: 202px;
+	 }
+	 form textarea#outfieldnames {
+     width: 202px;
+     height: 76px;
+     max-width: 202px;
+	 }
+	 #allforms{padding-left: 4.9%}
+	 #but3b{padding-left: 0.1%}
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Who's On First</title>
+	<link rel="icon" type="image/ico" href="http://www.mlb.com/favicon.ico"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">Who's On First</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/index">Individual</a></li>
+			  <li class="active"><a href="/team">Team</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	<form action="" method="post" name="login">
+		{{form.hidden_tag()}}
+	<div id="allforms" style="position:relative">
+		&nbsp;&nbsp;&nbsp;
+		<input class="btn btn-info btn-medium disabled" value="Input roster below:"/></div>
+	    <center><img SRC="/static/Diamond.jpg" height=512 width=630 alt="" /></center>
+		<div id="allforms" style="position:relative; top:-560px">
+		<div id="notof" style ="position:absolute; top:11px">
+		C: &nbsp; {{form.catchernames(rows="1")|safe}}<br></div>
+		<div style="position:absolute; top:93px">
+		1B: {{form.firstbnames(rows="2")|safe}}<br></div>
+		<div style="position:absolute; top:175px">
+		2B: {{form.secondbnames(rows="2")|safe}}<br></div>
+		<div style="position:absolute; top:257px">
+		SS: {{form.ssnames(rows="2")|safe}}<br></div>
+		<div id="but3b" style="position:absolute; top:339px">
+		3B: {{form.thirdbnames(rows="2")|safe}}<br></div>
+		<div style="position:absolute; top:421px">
+		OF: {{form.outfieldnames(rows="3")|safe}}<br></div>
+		<div style="position:absolute; top:524px">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" class="btn btn-medium" value="Submit"/></div>
+		</div></form>
+		
+	<div style="position:relative;top:20px">
+	<hr><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&copy; Shanshan Ding, Insight Data Science, 2013.</p></div>
+		
+
+
+  </body>
+</html>

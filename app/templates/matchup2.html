@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--	<link href="../assets/css/bootstrap.css" rel="stylesheet"> -->
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  .hero-unit{padding-top:20px; padding-bottom:20px}
+	  .alert{background-color: #eeeeee;
+	  border: 0px;
+	  color:  #000000; padding-bottom:0px}
+	  #pane11{height: 135px;}
+	  #pane12{padding-left: 150px;}
+	  #pane21{height: 135px;}
+	  #pane22{padding-left: 150px;}
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Who's On First</title>
+	<link rel="icon" type="image/ico" href="http://www.mlb.com/favicon.ico"/>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">Who's On First</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+			<li class="active"><a href="/index">Individual</a></li>
+			  <li><a href="/team">Team</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	<script src="/static/js/jquery.min.js"></script>
+
+	<form action="" method="post" name="login">
+		{{form.hidden_tag()}}
+    <p>&nbsp;<br></p>
+	<center><p>Batter: {{form.battername()}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pitcher: {{form.pitchername()}}</p>
+    <input type="submit" class="btn btn-info btn-medium" 
+	value="Click to see how they match up"/></center>
+	<p>&nbsp;<br></p>
+	
+		<div class="container" id="container2"> 
+	<div class = "alert"><a class="close" data-dismiss="alert"><p id="xtwo">×</p></a>  
+     <div class="hero-unit">  
+	<center> <div class="text-center">
+	 <div class="tabbable"> 
+	  <ul class="nav nav-tabs">
+	  <li class="active"><a href="#pane21" data-toggle="tab"><font size =3>Overall</font></a></li>
+    <li><a href="#pane22" data-toggle="tab"><font size=3>Details</font></a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane21" class="tab-pane active">  
+	 <p><font size =3>Matchup Favorability Index for 
+	 <input type="submit" class="btn btn-success disabled" 
+	value="{{batternametwo}}"/> against <input type="submit" class="btn btn-success disabled" 
+	value="{{pitchernametwo}}"/></font> <font size = 4>:</font> 
+	  <font size = 5>&nbsp;{{favratingtwo}}/100 </font><br>
+	  &nbsp;<br>
+	{% if zerotwo %}
+	<div style="position:relative;top:-13px">
+	 <img SRC="/static/zero.png" height=45 width=450 /></div>
+    {% elif onetwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/one.png" height=45 width=450 /></div>
+	 {% elif twotwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/two.png" height=45 width=450 /></div>
+	 {% elif threetwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/three.png" height=45 width=450 /></div>
+	 {% elif fourtwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/four.png" height=45 width=450 /></div>
+	 {% elif fivetwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/five.png" height=45 width=450 /></div>
+	 {% elif sixtwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/six.png" height=45 width=450 /></div>
+	 {% elif seventwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/seven.png" height=45 width=450 /></div>
+	 {% elif eighttwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/eight.png" height=45 width=450 /></div>
+	 {% elif ninetwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/nine.png" height=45 width=450 /></div>
+	 {% elif tentwo %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/ten.png" height=45 width=450 /></div>
+    {% endif %}
+	</div>
+	<div id="pane22" class="tab-pane" align = "left">
+	<font size = 2>An at-bat between <font size =3>{{batternametwo}}</font> and <font size =3>{{pitchernametwo}}</font> has:
+	<ul>
+	<li><font size =3>{{ahittwo}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-warning disabled" 
+	value="hit"/></li>
+	<li><font size = 3>{{awalktwo}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-success disabled" 
+	value="walk"/></li>
+	<li><font size = 3>{{ahrtwo}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-danger disabled" 
+	value="homerun"/></li>
+	</ul> 
+	</font>
+	</div></div>
+	
+  </div><!-- /.tab-content -->
+  </div><!-- /.tabbable --> 
+</div></div>
+	</div></center>
+	
+	<center>{% if xoneed %}
+		<div class="container" id = "container"> 
+	<div class = "alert"><a class="close" data-dismiss="alert"><p id="xone">×</p></a>  
+     <div class="hero-unit">  
+	 <div class="text-center">
+	 <div class="tabbable"> 
+	  <ul class="nav nav-tabs">
+	  <li class="active"><a href="#pane11" data-toggle="tab"><font size =3>Overall</font></a></li>
+    <li><a href="#pane12" data-toggle="tab"><font size=3>Details</font></a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane11" class="tab-pane active">  
+	 <p><font size =3>Matchup Favorability Index for 
+	 <input type="submit" class="btn btn-success disabled" 
+	value="{{batternameone}}"/> against <input type="submit" class="btn btn-success disabled" 
+	value="{{pitchernameone}}"/></font> <font size = 4>:</font> 
+	  <font size = 5>&nbsp;{{favratingone}}/100 </font><br>
+	  &nbsp;<br>
+	{% if zeroone %}
+	<div style="position:relative;top:-13px">
+	 <img SRC="/static/zero.png" height=45 width=450 /></div>
+    {% elif oneone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/one.png" height=45 width=450 /></div>
+	 {% elif twoone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/two.png" height=45 width=450 /></div>
+	 {% elif threeone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/three.png" height=45 width=450 /></div>
+	 {% elif fourone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/four.png" height=45 width=450 /></div>
+	 {% elif fiveone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/five.png" height=45 width=450 /></div>
+	 {% elif sixone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/six.png" height=45 width=450 /></div>
+	 {% elif sevenone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/seven.png" height=45 width=450 /></div>
+	 {% elif eightone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/eight.png" height=45 width=450 /></div>
+	 {% elif nineone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/nine.png" height=45 width=450 /></div>
+	 {% elif tenone %}
+    <div style="position:relative;top:-13px">
+	 <img SRC="/static/ten.png" height=45 width=450 /></div>
+    {% endif %}
+	</div>
+	<div id="pane12" class="tab-pane" align = "left">
+	<font size = 2>An at-bat between <font size =3>{{batternameone}}</font> and <font size =3>{{pitchernameone}}</font> has:
+	<ul>
+	<li><font size =3>{{ahitone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-warning disabled" 
+	value="hit"/></li>
+	<li><font size = 3>{{awalkone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-success disabled" 
+	value="walk"/></li>
+	<li><font size = 3>{{ahrone}} &#37;</font> probability of resulting in a <input type="submit" class="btn btn-danger disabled" 
+	value="homerun"/></li>
+	</ul> 
+	</font>
+	</div></div>
+  </div><!-- tabbabble-->
+  </div> 
+</div></div>
+	</div></center>
+	{% endif %}
+
+	<script>	
+	  $(function(){  // $(document).ready shorthand
+                  $('#container2').css('opacity', 0).slideDown('slow').animate({ opacity: 1 },{ queue: false, duration: 'slow' });
+                  });
+      $("#xone").click(function() {
+                 jQuery.ajax("kittensone", 
+                 {"type": "POST", 
+                  "data": { "xone": "1"}});
+                 }); 
+
+      $("#xtwo").click(function() {
+                 jQuery.ajax("kittenstwo", 
+                 {"type": "POST", 
+                  "data": { "xtwo": "1"}});
+                 }); 
+    </script>
+	</form>
+		
+	
+	</center>
+	<hr>
+	 <footer>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&copy; Shanshan Ding, Insight Data Science, 2013.</p>
+      </footer>
+  </body>
+</html>
