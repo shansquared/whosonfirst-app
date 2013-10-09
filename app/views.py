@@ -1,6 +1,9 @@
 # The global variables are used purely for the front end; I can eliminate them
 # once I figure out how to work with jQuery's Ajax methods.
 
+# The original version of this code uses python's MySQL connector, but I had
+# trouble getting MySQL running on AWS, so I stored data in csv files instead.
+
 from flask import Flask, render_template, flash, redirect, request
 from app import app
 from forms import InputForm, IndividualForm
